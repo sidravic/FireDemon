@@ -1,15 +1,37 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <title>Firebird | <%= yield(:title) %></title>
-  <%= stylesheet_link_tag 'print', :media => 'print' %>
-  <%= stylesheet_link_tag 'screen', :media => 'screen' %>
-  <%= javascript_include_tag :defaults %>
-  <%= csrf_meta_tag %>
-</head>
-<body>
+  <head>
+    <title>Firebird | <%= yield(:title) %></title>
+    <%= stylesheet_link_tag 'screen'  %>
+    <%= stylesheet_link_tag 'custom', :media => 'screen'  %>
+    <%= javascript_include_tag :defaults %>
+    <%= csrf_meta_tag %>
+  </head>
+  
+  <body>
+    <div class="header">
+      <div class="container">
+        <div class="logo">FireBird</div>
+        <div class="primary-navigation">
+          <ul>
+            <li><%= link_to 'Home', '' %> |</li>
+            <li><%= link_to 'About', '' %> |</li>
+            <li><%= link_to 'Contact', '' %> </li>
+          </ul>
+        </div>
+      </div>
+    </div>
 
-<%= yield %>
+    <div class="content">
+      <div class="container">
+        <%= yield %>
+      </div>      
+    </div>
 
-</body>
+    <div class="footer">
+      <div class="container">
+        Test
+      </div>
+    </div>
+  </body>
 </html>

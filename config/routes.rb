@@ -1,5 +1,5 @@
 GroupChat::Application.routes.draw do
-  get "pages/home"
+  match "pages/home"
 
   get "pages/about"
 

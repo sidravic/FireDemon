@@ -1,0 +1,48 @@
+body {
+    
+    color: #000000;
+    font-family: "Helvetica Neue",Arial,Helvetica,sans-serif;
+    font-size: 12pt;
+    line-height: 1.5;
+}
+
+
+.container {   
+    margin: auto;
+    width:950px;    
+}
+
+
+.header{
+    background:#222222;
+    min-height: 3em;
+    color: #FFFFFF;
+    
+    
+}
+
+
+
+.header .primary-navigation ul li{
+    list-style-type: none;
+    display:inline-block;
+    text-align: right;
+}
+
+.header .logo{
+    float:left;
+    width:50%;
+    font-weight:bold;
+    font-size:25px;
+    padding-left: 10px;
+   
+}
+
+.content{
+ 
+    background: lightgray;
+}
+
+.footer{
+    background: black;
+}
