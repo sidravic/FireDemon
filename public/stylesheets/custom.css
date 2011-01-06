@@ -21,21 +21,36 @@ body {
     
 }
 
-
-
-.header .primary-navigation ul li{
-    list-style-type: none;
-    display:inline-block;
-    text-align: right;
+.primary-navigation ul{
+    float:right;
+    font-size:12px;
+    font-weight:normal;
 }
 
-.header .logo{
+
+.primary-navigation ul li{
+    list-style-type: none;
+    display:inline-block;
+    text-align: right;    
+}
+
+ .logo{
     float:left;
-    width:50%;
+    width:70%;
     font-weight:bold;
     font-size:25px;
     padding-left: 10px;
    
+}
+
+ .primary-navigation ul li a{
+    text-decoration: none;
+    color: #FFFFFF;
+}
+
+ .primary-navigation ul li a:hover{
+    text-decoration: underline;
+    color: #FFFFFF;
 }
 
 .content{
@@ -45,4 +60,9 @@ body {
 
 .footer{
     background: black;
+    font-size:12px;    
+}
+
+.footer .primary-navigation{
+    float:right;
 }

@@ -90,6 +90,7 @@ GEM
       nokogiri (>= 1.2.0)
       rack (>= 1.0)
       rack-test (>= 0.5.3)
+    xmpp4r (0.5)
 
 PLATFORMS
   ruby
@@ -103,3 +104,4 @@ DEPENDENCIES
   rspec (= 2.3.0)
   rspec-rails (= 2.3.0)
   webrat (= 0.7.1)
+  xmpp4r
