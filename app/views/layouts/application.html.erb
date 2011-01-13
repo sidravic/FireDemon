@@ -13,18 +13,18 @@
       <div class="container">
         <div class="logo">FireBird</div>
         <div class="primary-navigation">
-          <ul>
-            <li><%= link_to 'Home', '' %> |</li>
-            <li><%= link_to 'About', '' %> |</li>
-            <li><%= link_to 'Contact', '' %> </li>
-          </ul>
+          <%= render 'layouts/login_links' %>         
         </div>
       </div>
     </div>
 
     <div class="content">
       <div class="container">
+        <div class="flash">
+          <%= render "layouts/error_messages" %>
+        </div>
         <%= yield %>
+        <%= debug(params) %>
       </div>      
     </div>
 

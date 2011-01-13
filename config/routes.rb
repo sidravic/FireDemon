@@ -1,9 +1,15 @@
 GroupChat::Application.routes.draw do
-  match "pages/home"
 
-  get "pages/about"
+  root :to => 'pages#home'
 
-  get "pages/contact"
+  match "pages/home" => "pages#home", :as => 'home'
+  match "pages/about" => "pages#about", :as => 'about'
+  match "pages/contact" => "pages#contact", :as => 'contact'
+
+  match "activate/:token" => "users#activate", :as => 'activate'
+  resources :users
+  
+  resources :user_sessions, :only => ['new', 'create', 'destroy']
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

@@ -4,12 +4,15 @@ body {
     font-family: "Helvetica Neue",Arial,Helvetica,sans-serif;
     font-size: 12pt;
     line-height: 1.5;
+    font-size:100%
 }
 
 
 .container {   
     margin: auto;
-    width:950px;    
+    width:950px;
+    font-family: "Helvetica Neue",Arial,Helvetica,sans-serif;
+    font-size:100%;
 }
 
 
@@ -17,7 +20,7 @@ body {
     background:#222222;
     min-height: 3em;
     color: #FFFFFF;
-    
+    border-bottom: 10px solid #D2C9BF;
     
 }
 
@@ -54,15 +57,47 @@ body {
 }
 
 .content{
- 
-    background: lightgray;
+    margin-top:1em;
+    min-height: 510px;
+    font-size:90%;
+    color:#222;
+    background:#fff;
+    font-family:"Helvetica Neue", Arial, Helvetica, sans-serif;
 }
 
 .footer{
+    margin-top: 1em;
+    border-top: 5px solid #D2C9BF;
     background: black;
     font-size:12px;    
 }
 
 .footer .primary-navigation{
     float:right;
+}
+
+input[type='text'], input[type='password']{
+    height:2em;
+}
+
+.flash-notice{
+    background:#D2C9BF;
+    color: green;
+    padding:5px;
+    width: 90%;
+     -moz-box-shadow:0 0 10px rgba(0, 0, 0, 0.2);
+     text-align:center;
+     margin-top:1em;
+     margin-bottom:1em;
+}
+
+.flash-error{
+    margin-top:1em;
+    margin-bottom:1em;
+    background:#D2C9BF;
+    color: red;
+    padding:5px;
+    width: 98%;
+     -moz-box-shadow:0 0 10px rgba(0, 0, 0, 0.2);
+     text-align:center;
 }

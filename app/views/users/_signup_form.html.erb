@@ -1,0 +1,56 @@
+<div class="signup-form">
+  <div class="form-title"> Sign up </div>
+  
+  <%= form_for @user, :as => :user, :url => users_url do |f| %>
+    <div class="field">
+      <%= f.label :name %><br/>
+      <span style="color:red;font-weight: normal; font-size:11px; "><%= errors_for(:name, @user) %> </span>
+      <%= f.text_field :name %>      
+    </div>
+
+    <div class="field">
+      <%= f.label :email %><br/>
+      <span style="color:red;font-weight: normal; font-size:11px; "><%= errors_for(:email, @user) %></span>
+      <%= f.text_field :email %>      
+    </div>
+
+    <div class="field">
+      <%= f.label :password %><br/>
+      <span style="color:red;font-weight: normal; font-size:11px;"><%= errors_for(:password, @user) %></span>
+      <%= f.password_field :password %>
+    </div>
+
+    <div class="field">
+      <%= f.label :password_confirmation %><br/>
+      <%= f.password_field :password_confirmation %>
+    </div>
+
+    <div class="field"
+       <%= f.submit 'Sign Up', :class => 'submit-button' %>
+    </div>
+
+<% end  %>
+</div>
+
+
+<style>
+  .form-title{
+    text-align: center;
+    font-weight: bold;
+    font-size: 16px;
+}
+
+.field_with_errors input{
+  border: 1px solid red;
+}
+
+.field_with_errors label{
+  color:red;
+}
+
+.field-error{
+  color:red;
+  font-weight:normal;
+  font-size:80%;
+}
+</style>

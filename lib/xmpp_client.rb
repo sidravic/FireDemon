@@ -4,6 +4,8 @@ require 'xmpp4r/roster'
 
 class XmppClient
   include Jabber
+
+  attr_reader :client, :roster
   
   def initialize(jid, domain = 'siddharth-ravichandrans-macbook-pro.local')
     @client = Jabber::Client.new(JID::new("#{jid}@#{domain}"))
@@ -56,6 +58,13 @@ class XmppClient
     @client.send(Presence.new.set_type(:subscribe).set_to("#{to}@#{domain}"))
   end
 
+  def activate_callbacks
+    activate_subscription_request_callback
+    activate_presence_callback
+    #  activate_update_callback
+    activate_message_callback
+  end
+
   # this sets up a callback for subscription requests and is different from subscription_callback
   # Subscription callback is activated whenever there is a change in presence
   # Subscription request callback gets called when the presence is :subscribe
@@ -69,6 +78,24 @@ class XmppClient
     p "[Presence] #{presence}"
     @roster.accept_subscription(presence.from)
    end
+  end
+
+  # identifies change in presence
+  def activate_presence_callback
+    @client.add_presence_callback do |old_presence, new_presence|
+      p "[PRESENCE CALLBACK UPDATE] "
+      p "[NEW PRESENCE OF] #{new_presence.from.to_s} IS #{new_presence.show}"
+      # DO something with the new presence
+    end
+  end
+
+  def activate_update_callback
+    @client.add_update_callback do |presence|
+      if presence.ask == :subscribe
+        p "[UPDATE CALLBACK]"
+        p "[UPDATE RESPONSE FROM] #{presence.from.to_s}"
+      end
+    end
   end
 
 

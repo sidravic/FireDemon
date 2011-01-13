@@ -29,6 +29,8 @@ GEM
       activesupport (= 3.0.3)
     activesupport (3.0.3)
     arel (2.0.6)
+    authlogic (2.1.6)
+      activesupport
     builder (2.1.2)
     cgi_multipart_eof_fix (2.5.0)
     daemons (1.0.10)
@@ -63,6 +65,7 @@ GEM
       activesupport (= 3.0.3)
       bundler (~> 1.0)
       railties (= 3.0.3)
+    rails3-generators (0.14.0)
     railties (3.0.3)
       actionpack (= 3.0.3)
       activesupport (= 3.0.3)
@@ -96,11 +99,13 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  authlogic
   cgi_multipart_eof_fix
   fastthread
   mongrel (= 1.2.0.pre2)
   mysql2
   rails (= 3.0.3)
+  rails3-generators
   rspec (= 2.3.0)
   rspec-rails (= 2.3.0)
   webrat (= 0.7.1)

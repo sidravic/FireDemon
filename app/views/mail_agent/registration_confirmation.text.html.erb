@@ -1,0 +1,17 @@
+<html>
+  <head>
+  </head>
+
+  <body>
+    <p> Dear <%= @user.name %> </p>
+    
+    <p> Thank you for registering with FireBird.com. 
+      Please click the link to activate your account.
+      <%= link_to 'Activate your account', activate_url(:token => @user.perishable_token) %>
+    </p>
+
+    <p> We hope you enjoy using FireBird. </p>
+    <p> Thanks </p>
+    
+  </body>
+</html>

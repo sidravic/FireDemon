@@ -2,16 +2,15 @@
 
 <div class="left-content">
   <h2> Firebird</h2>
-  <p>Firebird is a multi user chat utility that allows distributed development teams to collaborate on projects. It allows developers to chat.
+  <p>
+    Firebird is a multi user chat utility that allows distributed development
+    teams to collaborate on projects. It allows developers to chat.
   </p>
-  
 
   <p> <%= link_to "Login", "", :class => 'round' %></p>
 </div>
 
 <div class="right-content">
-  
-  
   <%= render "users/signup_form" %>
 </div>
 
@@ -20,7 +19,7 @@
 
 <style>
   .left-content{
-    width:65%;
+    width:63%;
     display:inline-block;
     float:left;
 }
@@ -28,11 +27,14 @@
 .right-content{
   display:inline-block;
   padding-left:60px;
+  width:30%;
 }
 
 .signup-form{
   background: url("/images/yellow-bg.jpg");
   padding:20px;
   -moz-box-shadow:0 0 10px rgba(0, 0, 0, 0.2);
+
+  
 }
 </style>
