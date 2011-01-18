@@ -27,7 +27,10 @@ class XmppClient
   end
 
   def authorize(password)
-    @client.auth(password)
+    @client.auth(password)    
+  rescue => e
+    puts '[ERROR] ' + "#{e.message}"
+    return false
   end
 
   def set_presence(presence = :available)

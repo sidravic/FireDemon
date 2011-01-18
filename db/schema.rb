@@ -10,7 +10,22 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110113132223) do
+ActiveRecord::Schema.define(:version => 20110117101844) do
+
+  create_table "jabber_credentials", :force => true do |t|
+    t.string   "jabber_id"
+    t.string   "jabber_password"
+    t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "rooms", :force => true do |t|
+    t.integer  "user_id"
+    t.string   "nick"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "sessions", :force => true do |t|
     t.string   "session_id", :null => false

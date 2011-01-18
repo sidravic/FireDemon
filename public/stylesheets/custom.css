@@ -39,7 +39,7 @@ body {
 
  .logo{
     float:left;
-    width:70%;
+    width:65%;
     font-weight:bold;
     font-size:25px;
     padding-left: 10px;
@@ -76,7 +76,7 @@ body {
     float:right;
 }
 
-input[type='text'], input[type='password']{
+input[type = 'text'], input[type='password']{
     height:2em;
 }
 
@@ -101,3 +101,21 @@ input[type='text'], input[type='password']{
      -moz-box-shadow:0 0 10px rgba(0, 0, 0, 0.2);
      text-align:center;
 }
+
+.shadow{
+    -moz-box-shadow:0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+.new-form{
+
+	  background: url("/images/yellow-bg.jpg");
+	  padding:20px;
+	
+}
+
+.medium{
+	width:500px;
+	margin:auto;	
+	margin-top:1em;
+}
+

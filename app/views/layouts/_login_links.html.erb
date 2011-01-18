@@ -1,5 +1,12 @@
-
+<% unless current_user %>
   <ul>
-    <li><%= link_to 'Home', '' %> |</li>
-    <li><%= link_to 'Login', '' %> </li>
+    <li><%= link_to 'Home', home_url %> |</li>
+    <li><%= link_to 'Login', new_user_session_url %> </li>
   </ul>
+<% else %>
+  <ul>
+    <li> Hi <%= link_to "#{current_user.name}", user_url(current_user) %>  <span class='presence-status'> (offline) </span>|</li>
+	<li> <%= link_to 'Rooms', user_rooms_url(current_user) %> |</li> 
+    <li><%= link_to 'Logout', user_session_url(current_user), :method => :delete, :confirm => "What the fuck" %> </li>
+  </ul>
+<% end %>

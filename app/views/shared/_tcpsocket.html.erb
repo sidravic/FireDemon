@@ -1,0 +1,31 @@
+
+
+	<script src                = 'http://localhost:8000/static/Orbited.js'></script>
+	
+	
+	<script>
+		document.domain           = document.domain;
+		Orbited.settings.port     = 8000;
+		Orbited.settings.hostname = 'localhost';
+		TCPSocket                 = Orbited.TCPSocket;
+
+	</script>
+	
+
+	<script>
+/*	$(document).ready(function(){
+
+		var conn                  = new Orbited.TCPSocket();
+		conn.open('localhost', 5222);
+		conn.onopen               = function(){ alert('connection opened');
+			//	conn.send('Hello World');
+		}
+		conn.onread               = function(data){ alert('RECIEVE DATA' + data ); }
+
+conn.onclose                = function(data){ alert('connection closed'); }
+
+	});
+*/
+	</script>
+
+<script src                 = 'http://localhost:8000/static/protocols/xmpp/xmpp.js'></script>

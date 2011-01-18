@@ -1,0 +1,55 @@
+
+<script>
+		
+		console.log('XmppClient partial loaded');
+		var hostname                = 'localhost';
+		var domain                  = 'siddharth-ravichandrans-macbook-pro.local';
+		var bare_jid                = '<%= current_user.jabber_credential.jabber_id %>';
+		var password                = '<%= current_user.jabber_credential.jabber_password %>';
+	//	var username               = bare_jid + '@' + domain;
+
+		console.log('xmpp client connect request posted');
+		
+		function loginSuccess(){
+			alert('Login has been successful');
+			xmpp_client.set_presence('available');
+		}
+		
+		function loginFailure(){
+			console.log('Login Failed');
+		}
+
+		function serverConnectSuccess(){
+			console.log('Server Connection Success');
+			$('.presence-status').html('('+ 'Socket Connected'+')');
+			xmpp_client.login(bare_jid, password, loginSuccess, loginFailure);
+		}
+
+		function serverConnectFailure(){
+			alert('Server Connection Failed');
+		}
+		
+
+		var xmpp_client             = new XMPPClient;
+		xmpp_client.connect('localhost', 5222);
+		
+
+		xmpp_client.onSocketConnect = function(){
+			$('.presence-status').html('('+ 'Socket Connected'+')')
+			xmpp_client.connectServer(domain, serverConnectSuccess, serverConnectFailure);		
+			xmpp_client.set_presence("available");
+		}
+		
+		xmpp_client.onPresence = function(ntype, from) {
+			console.log(ntype + ' ' + from);
+			$('.presence-status').html('(' + ntype + ')');
+		}
+		
+
+		
+		
+
+	
+
+</script>
+

@@ -1,2 +1,51 @@
-<h1>UserSessions#new</h1>
-<p>Find me in app/views/user_sessions/new.html.erb</p>
+<div class="page-title">
+  Login
+</div>
+
+<div class="login-form round shadow">
+
+  <%= form_for @user_session, :as => :user_session, :url => user_sessions_url do |f| %>
+  <div class="field">
+    <p> <%= f.label :email %> <br/>
+     <%= f.text_field :email %> </p>
+  </div>
+
+  <div class="field">
+    <p> <%= f.label :password  %> <br/>
+     <%= f.password_field :password %> </p>
+  </div>
+
+  <div class="field">
+    <p> <%= f.submit 'Login',  :class => 'submit-button' %> &nbsp; Or &nbsp; <%= link_to 'Sign Up', new_user_url %></p>
+  </div>
+
+  <% end %>
+</div>
+
+
+<style>
+  .login-form{
+  background: url("/images/yellow-bg.jpg");
+  width: 40%;
+  margin:auto;
+  padding:20px;
+  margin-top: 2em;
+}
+
+.login-form input[type='text'], .login-form input[type='password']{
+  width: 340px;
+  height:2.5em;
+}
+
+.page-title {
+  font-size: 24px;
+  text-align: center;
+
+}
+
+.round {
+    -moz-border-radius:    10px;
+    -webkit-border-radius: 10px;
+     border-radius:         10px;
+}
+</style>

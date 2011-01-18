@@ -1,0 +1,29 @@
+<h2>Create a new room</h2>
+
+<div class='new-form shadow medium'>
+	<%= form_for @room, :as => :room, :url => user_rooms_url(current_user) do |f|%>
+	<div class='element-field'> Room Name : <br/>
+		<%= f.text_field :nick %>
+	</div>
+	
+	<div class='element-field'>
+		<%= f.submit 'Create', :class => 'submit-button' %> 
+	</div>
+	<% end%>
+</div>
+
+<style>
+	
+	.new-form input[type = 'text']{
+		height:2.5em;
+		width:100%;
+		font-size:14px;
+
+	}
+	
+	h2{
+		margin:auto;
+		width:550px;
+
+	}
+</style>

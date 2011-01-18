@@ -9,8 +9,9 @@ class UsersController < ApplicationController
   def create    
     @user = User.new(params[:user])
     if @user.save
+      clear_current_session
       MailAgent.registration_confirmation(@user).deliver
-      flash[:notice] = 'An email has been sent to your email account. Please verify your email address.'
+      flash[:notice] = 'Please activate your account by clicking on the link sent to you by email.'
       redirect_to new_user_url
     else
       flash.now[:error] = 'Please fix the listed errors'
