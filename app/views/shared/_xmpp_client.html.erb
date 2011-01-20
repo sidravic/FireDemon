@@ -11,7 +11,7 @@
 		console.log('xmpp client connect request posted');
 		
 		function loginSuccess(){
-			alert('Login has been successful');
+			alert('Login Successful');
 			xmpp_client.set_presence('available');
 		}
 		
@@ -20,9 +20,10 @@
 		}
 
 		function serverConnectSuccess(){
-			console.log('Server Connection Success');
-			$('.presence-status').html('('+ 'Socket Connected'+')');
+			alert('Server Connection Success');
+			$('.presence-status').html('('+ 'Server Connected'+')');
 			xmpp_client.login(bare_jid, password, loginSuccess, loginFailure);
+			
 		}
 
 		function serverConnectFailure(){
@@ -35,17 +36,41 @@
 		
 
 		xmpp_client.onSocketConnect = function(){
-			$('.presence-status').html('('+ 'Socket Connected'+')')
-			xmpp_client.connectServer(domain, serverConnectSuccess, serverConnectFailure);		
-			xmpp_client.set_presence("available");
+			$('.presence-status').html('('+ 'On Socket Connected'+')');
+			xmpp_client.connectServer(domain, serverConnectSuccess, serverConnectFailure);
+			console.log('After COnnect Server is called');	
+			xmpp_client.login(bare_jid, password, loginSuccess, loginFailure);	
+
 		}
 		
 		xmpp_client.onPresence = function(ntype, from) {
-			console.log(ntype + ' ' + from);
-			$('.presence-status').html('(' + ntype + ')');
+			var username = bare_jid + '@' + domain + '/Orbited'; 
+			if(from == username){
+				if (ntype == null){
+					$('.presence-status').html('(available)');
+				}
+				else{
+					$('.presence-status').html('(' + ntype + ')');
+				}
+			}				
 		}
 		
-
+		xmpp_client.onMessage = function(jid, username, text) {
+			$('.conversation-box').append('<div class="user-message">' + text + '</div>');
+			alert('JID' +  jid.to_s + ' Username ' + username + ' Text' + text);
+		}
+		
+	
+	$(document).ready(function(){
+		$('.send-message-button').click(function(){
+			
+			alert('Wats going on');
+			var message = $('#message').val();			
+			xmpp_client.msg('007@conference.' + domain, message);			
+			return false;
+		});
+	});
+		
 		
 		
 

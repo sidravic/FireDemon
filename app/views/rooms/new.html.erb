@@ -1,9 +1,12 @@
 <h2>Create a new room</h2>
 
 <div class='new-form shadow medium'>
+
 	<%= form_for @room, :as => :room, :url => user_rooms_url(current_user) do |f|%>
-	<div class='element-field'> Room Name : <br/>
-		<%= f.text_field :nick %>
+	<div class='element-field'> <%= f.label :nick, 'Room Name :' %>
+		<span style="color:red;font-weight: normal; font-size:11px; "><%= errors_for(:nick, @room) %> </span>
+		<%= f.text_field :nick %><br/>
+	 	
 	</div>
 	
 	<div class='element-field'>

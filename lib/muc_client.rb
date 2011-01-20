@@ -7,6 +7,7 @@ class MucClient
   attr_reader :xmpp_client, :muc, :room_jid
 # accepts an xmpp_client object
   def initialize(xmpp_client)
+    Jabber::debug = true if Rails.env == 'development'
     @xmpp_client = xmpp_client
     @muc = Jabber::MUC::MUCClient.new(@xmpp_client.client)
   end
@@ -15,10 +16,10 @@ class MucClient
   def join(room_jid, domain = 'siddharth-ravichandrans-macbook-pro.local')
     @room_jid = room_jid
     jid = Jabber::JID.new("#{@room_jid}@conference.#{domain}/" + @xmpp_client.client.jid.node)
-    p " JID " + jid.to_s
+    puts " JID " + jid.to_s
 
     @muc.join(Jabber::JID.new("#{room_jid}@conference.#{domain}/" + @xmpp_client.client.jid.node))
-    p "[JOINED ROOM] " + @muc.roster.inspect
+    puts "[JOINED ROOM] " + @muc.roster.inspect
   end
 
   def activate_callbacks
@@ -29,19 +30,19 @@ class MucClient
 
   def activate_join_callback
     @muc.add_join_callback do |m|
-      p "[NEW MEMBER JOINED] " + m.to.jid.node
+      puts "[NEW MEMBER JOINED] " + m.to.jid.node
     end
   end
 
   def activate_message_callback
     @muc.add_message_callback do |m|
-      p "[NEW MESSAGE]" + m.body
+      puts "[NEW MESSAGE]" + m.body
     end
   end
 
   def activate_leave_callback
     @muc.add_leave_callback do |m|
-      p "[MEMBER LEFT] " + m.to.jid.node
+      puts "[MEMBER LEFT] " + m.to.jid.node
     end
   end
 

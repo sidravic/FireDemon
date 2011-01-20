@@ -1,31 +1,33 @@
 
 
-	<script src                = 'http://localhost:8000/static/Orbited.js'></script>
+	<script src                     = 'http://localhost:8000/static/Orbited.js' content-type='application/x-javascript'></script>
 	
 	
 	<script>
-		document.domain           = document.domain;
-		Orbited.settings.port     = 8000;
-		Orbited.settings.hostname = 'localhost';
-		TCPSocket                 = Orbited.TCPSocket;
-
+		if((Orbited.util.browser=="opera")||(Orbited.util.browser=="ie")){
+	     Orbited.settings.streaming = false;
+	  };
+		document.domain                = document.domain;
+		Orbited.settings.port          = 8000;
+		Orbited.settings.hostname      = 'localhost';
+		TCPSocket                      = Orbited.TCPSocket;		
 	</script>
 	
 
 	<script>
 /*	$(document).ready(function(){
 
-		var conn                  = new Orbited.TCPSocket();
+		var conn                       = new Orbited.TCPSocket();
 		conn.open('localhost', 5222);
-		conn.onopen               = function(){ alert('connection opened');
+		conn.onopen                    = function(){ alert('connection opened');
 			//	conn.send('Hello World');
 		}
-		conn.onread               = function(data){ alert('RECIEVE DATA' + data ); }
+		conn.onread                    = function(data){ alert('RECIEVE DATA' + data ); }
 
-conn.onclose                = function(data){ alert('connection closed'); }
+conn.onclose                     = function(data){ alert('connection closed'); }
 
 	});
 */
 	</script>
 
-<script src                 = 'http://localhost:8000/static/protocols/xmpp/xmpp.js'></script>
+<script src                      = 'http://localhost:8000/static/protocols/xmpp/xmpp.js' content-type='application/x-javascript'></script>

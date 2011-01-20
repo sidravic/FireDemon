@@ -8,9 +8,11 @@ class XmppClient
   attr_reader :client, :roster
   
   def initialize(jid, domain = 'siddharth-ravichandrans-macbook-pro.local')
-    @client = Jabber::Client.new(JID::new("#{jid}@#{domain}"))
+  #  Jabber::debug =  true if Rails.env == 'development'
+    puts "[Jabber ID] #{jid}@#{domain}"
+    @client = Jabber::Client.new(Jabber::JID::new("#{jid}@#{domain}"))
     @client.connect
-    @roster = Roster::Helper.new(@client)
+    @roster = Jabber::Roster::Helper.new(@client)
   end
 
   def register(password)
@@ -27,10 +29,8 @@ class XmppClient
   end
 
   def authorize(password)
-    @client.auth(password)    
-  rescue => e
-    puts '[ERROR] ' + "#{e.message}"
-    return false
+    puts "[Password] ********************************************************************* " + password.to_s
+    @client.auth(password)      
   end
 
   def set_presence(presence = :available)
