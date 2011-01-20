@@ -6,13 +6,16 @@
 		var domain                  = 'siddharth-ravichandrans-macbook-pro.local';
 		var bare_jid                = '<%= current_user.jabber_credential.jabber_id %>';
 		var password                = '<%= current_user.jabber_credential.jabber_password %>';
+		var chatroom_domain			= 'conference.' + domain;
 	//	var username               = bare_jid + '@' + domain;
 
 		console.log('xmpp client connect request posted');
 		
 		function loginSuccess(){
 			alert('Login Successful');
-			xmpp_client.set_presence('available');
+		//	xmpp_client.set_presence('available');
+			xmpp_client.join_room('100' + chatroom_domain, 'available', null)
+			console.log('JOIN ROOM Called');
 		}
 		
 		function loginFailure(){
@@ -56,17 +59,30 @@
 		}
 		
 		xmpp_client.onMessage = function(jid, username, text) {
-			$('.conversation-box').append('<div class="user-message">' + text + '</div>');
+			$('.conversation-box').append('<div class="user-message shadow">' + text + '</div>');
 			alert('JID' +  jid.to_s + ' Username ' + username + ' Text' + text);
 		}
 		
+	/*	self.join_room = function(room, status, status_msg) {
+	        room_id = room;
+	        room_jid = room_id + '/' + user;
+	        self.send(EXT_PRESENCE[0] + full_jid + EXT_PRESENCE[1] + room_jid + EXT_PRESENCE[3] + status + EXT_PRESENCE[4] + status_msg + EXT_PRESENCE[5]);
+	    } 
+	
+	self.groupchat_msg = function(content) {
+        self.send(construct(GROUPCHAT_MSG, [full_jid, room_id, content]));
+    }
+	*/
+	
+
 	
 	$(document).ready(function(){
 		$('.send-message-button').click(function(){
 			
 			alert('Wats going on');
 			var message = $('#message').val();			
-			xmpp_client.msg('007@conference.' + domain, message);			
+		//	xmpp_client.msg('007@conference.' + domain, message);
+			xmpp_client.groupchat_msg(message);
 			return false;
 		});
 	});
