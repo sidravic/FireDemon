@@ -9,6 +9,11 @@
 	</div>
 </div>
 
+<% content_for :js do %>
+	<script>
+		 ROOM_NICK = '<%= @room.nick %>'; 
+	</script>
+<% end %>
 
 
 <style>

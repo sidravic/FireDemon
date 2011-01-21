@@ -1,6 +1,6 @@
 <% content_for :title do %>Home<% end  %>
 
-<div class="left-content">
+<div class = "left-content">
   <h2> Firebird</h2>
   <p>
     Firebird is a multi user chat utility that allows distributed development
@@ -10,7 +10,7 @@
   <p> <%= link_to "Login", new_user_session_url, :class => 'round' %></p>
 </div>
 
-<div class="right-content">
+<div class = "right-content">
   <%= render "users/signup_form" %>
 </div>
 
@@ -34,6 +34,7 @@
   background: url("/images/yellow-bg.jpg");
   padding:20px;
   -moz-box-shadow:0 0 10px rgba(0, 0, 0, 0.2);
+	-webkit-box-shadow:0 0 10px rgba(0, 0, 0, 0.2);
 
   
 }
