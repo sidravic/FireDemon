@@ -8,7 +8,7 @@ class UsersController < ApplicationController
 
   def create    
     @user = User.new(params[:user])
-    if @user.save
+    if @user.save!
       clear_current_session
       MailAgent.registration_confirmation(@user).deliver
       flash[:notice] = 'Please activate your account by clicking on the link sent to you by email.'

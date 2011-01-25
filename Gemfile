@@ -16,12 +16,15 @@ group :development do
 	gem 'cgi_multipart_eof_fix'
 	gem 'fastthread'
 	gem 'factory_girl_rails', '1.0'
+
 end
 
 group :test do
 	gem 'rspec', '2.3.0'
 	gem 'webrat', '0.7.1'
 	gem 'factory_girl_rails', '1.0'
+	gem 'rspec-rails', '2.3.0'
+
 end
 
 
