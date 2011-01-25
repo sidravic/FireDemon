@@ -20,7 +20,7 @@ class User < ActiveRecord::Base
 
   def activate
     self.activated                       = true
-    save(false)
+    save(:validate => false)
   end
   
   def register_jabber

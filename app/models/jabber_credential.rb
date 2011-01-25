@@ -1,5 +1,5 @@
 class JabberCredential < ActiveRecord::Base
-  validates :jabber_id, :unique         => true,
+  validates :jabber_id, :uniqueness         => true,
                         :presence       => true
 
 

@@ -1,3 +1,32 @@
-<h1>Rooms#index</h1>
+<h1>Rooms List</h1>
 <p>Find me in app/views/rooms/index.html.erb</p>
-<%= link_to 'Create a new room', new_user_room_url(current_user) %>
+
+<div class='new-room-link'>
+	<%= link_to 'Create a new room', new_user_room_url(current_user) %>
+</div>
+
+<% current_user.rooms.each do |room| %>
+	<div class = 'room-list'> 
+		<%= image_tag('room.png') %>  
+		<%= link_to  room.nick, user_room_url(current_user, room), :class =>'room-nick' %> 
+	</div>
+<% end %>
+
+
+<style>
+	.room-list{
+		width:45%;
+		float:left;
+		display:inline-block;
+	}
+	
+	.room-nick{
+		vertical-align:50px;
+		font-weight:bold;
+		font-size:20px;
+	}
+	
+	.new-room-link{
+		display:block;
+	}
+</style>

@@ -25,6 +25,7 @@ describe UsersController do
 
   describe "GET 'show'" do
     it "should be successful" do
+      pending
       get 'show'
       response.should be_success
     end
@@ -32,6 +33,7 @@ describe UsersController do
 
   describe "GET 'edit'" do
     it "should be successful" do
+      pending
       get 'edit'
       response.should be_success
     end
@@ -39,6 +41,7 @@ describe UsersController do
 
   describe "GET 'update'" do
     it "should be successful" do
+      pending
       get 'update'
       response.should be_success
     end
@@ -46,6 +49,7 @@ describe UsersController do
 
   describe "GET 'destroy'" do
     it "should be successful" do
+      pending
       get 'destroy'
       response.should be_success
     end

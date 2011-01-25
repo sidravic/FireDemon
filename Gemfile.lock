@@ -37,6 +37,10 @@ GEM
     diff-lcs (1.1.2)
     erubis (2.6.6)
       abstract (>= 1.0.0)
+    factory_girl (1.3.2)
+    factory_girl_rails (1.0)
+      factory_girl (~> 1.3)
+      rails (>= 3.0.0.beta4)
     fastthread (1.0.7)
     gem_plugin (0.2.3)
     i18n (0.5.0)
@@ -101,6 +105,7 @@ PLATFORMS
 DEPENDENCIES
   authlogic
   cgi_multipart_eof_fix
+  factory_girl_rails (= 1.0)
   fastthread
   mongrel (= 1.2.0.pre2)
   mysql2
