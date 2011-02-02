@@ -26,5 +26,6 @@ class User < ActiveRecord::Base
   def register_jabber
     xmpp_client = XmppClient.new(self.jabber_credential.jabber_id)    
     xmpp_client.register(self.jabber_credential.jabber_password)
+    xmpp_client.close
   end
 end

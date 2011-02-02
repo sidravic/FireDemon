@@ -41,3 +41,4 @@ module GroupChat
     config.filter_parameters += [:password]
   end
 end
+

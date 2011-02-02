@@ -6,7 +6,7 @@
 		var domain                                 = 'siddharth-ravichandrans-macbook-pro.local';
 		var bare_jid                               = '<%= current_user.jabber_credential.jabber_id %>';
 		var password                               = '<%= current_user.jabber_credential.jabber_password %>';
-		var chatroom_domain                        = 'conference.' + domain;
+		var chatroom_domain                        = 'conference.' + domain + '/';
 	//	var username                             = bare_jid + '@' + domain;
 
 		console.log('xmpp client connect request posted');
@@ -16,12 +16,12 @@
 		//	xmpp_client.set_presence('available');
 			alert(typeof ROOM_NICK);
 		   if(typeof ROOM_NICK != 'undefined'){
-				 xmpp_client.join_room(ROOM_NICK, chatroom_domain, bare_jid, 'available', null);		 
+				 xmpp_client.join_room(ROOM_NICK, chatroom_domain, bare_jid, 'available', null);					 	 
 				 console.log('JOIN ROOM Called');
 			}	
 		}
 
-
+		
 		
 		function loginFailure(){
 			console.log('Login Failed');
@@ -42,7 +42,9 @@
 		var xmpp_client                            = new XMPPClient;
 		xmpp_client.connect('localhost', 5222);
 		
-
+		// xmpp.js api methods
+		// view the orbited/protocols/xmpp/xmpp.js file to view the entire list of api methods provided by orbited
+		
 		xmpp_client.onSocketConnect                = function(){
 			$('.presence-status').html('('+ 'On Socket Connected'+')');
 			xmpp_client.connectServer(domain, serverConnectSuccess, serverConnectFailure);
@@ -68,23 +70,42 @@
 			alert('JID' +  jid.to_s + ' Username ' + username + ' Text' + text);
 		}
 		
-
+		function leave_groupchat_room(){
+			xmpp_client.leave_room();
+		}
 	
-
+		function groupchat_send_message(message, chatroom_domain){			
+			xmpp_client.groupchat_msg(message, chatroom_domain);
+		}
+		
 	
+	// Page methods to send message
 	$(document).ready(function(){
+		//send message button click
 		$('.send-message-button').click(function(){
 			
 			alert('Wats going on');
-			var message                               = $('#message').val();			
+			var message = $('#message').val();			
 		//	xmpp_client.msg('007@conference.' + domain, message);
 			xmpp_client.groupchat_msg(message, chatroom_domain);
 			return false;
 		});
+		
+		//leave room link click
+		
+		$('.leave-room-link').click(function(){
+			xmpp_client.leave_room();
+			var redirection_url = $(this).attr('href');
+			alert(redirection_url);
+		//	window.location     = redirection_url;
+			return false;
+		});
+
+
 	});
-		
-		
-		
+
+
+
 
 	
 

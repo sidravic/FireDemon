@@ -9,6 +9,7 @@ gem 'mysql2'
 gem 'xmpp4r'
 gem 'authlogic'
 gem 'rails3-generators'
+gem 'redis', '2.1.1'
 
 group :development do
 	gem 'rspec-rails', '2.3.0'

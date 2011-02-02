@@ -11,7 +11,7 @@ class RoomsController < ApplicationController
   end
 
   def create
-    @room = current_user.rooms.new(params[:room])
+    @room = current_user.rooms.build(params[:room])
     if @room.save
       flash[:notice] = 'Your room has been successfully created'
       redirect_to user_room_url(current_user, @room)

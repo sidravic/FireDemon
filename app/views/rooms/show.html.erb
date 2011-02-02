@@ -1,8 +1,10 @@
+<% content_for :title do%>Rooms<% end %>
 <h1>Room : <%= @room.nick %></h1>
-<div class  = 'chatbox shadow round'>
-	<div class = 'conversation-box'>
+<p> <%= link_to "Leave Room", user_rooms_url, :class => 'leave-room-link' %> </p>
+<div class      = 'chatbox shadow round'>
+	<div class     = 'conversation-box'>
     </div>
-	<div class = 'new-message-box'>
+	<div class     = 'new-message-box'>
 		<%= form_for '', :as => '', :url => '' do %>
 		<%= submit_tag :send, :class => 'send-message-button' %> &nbsp; <%= text_area_tag :message, "", :rows => '3', :cols => '100' %>
 		<% end %>
@@ -11,7 +13,21 @@
 
 <% content_for :js do %>
 	<script>
-		 ROOM_NICK = '<%= @room.nick %>'; 
+		 ROOM_NICK    = '<%= @room.nick %>'; 
+	</script>
+	
+	<script>
+	$(document).ready(function(){
+		$('#message').keypress(function(event){
+			if(event.which == 13)
+			{
+				var message = $('#message').val();
+				groupchat_send_message(message, chatroom_domain);
+			}			
+		});
+
+
+	});
 	</script>
 <% end %>
 

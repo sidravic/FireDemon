@@ -4,7 +4,7 @@ describe Room do
   
   before(:each) do
     @user = Factory.build(:user)
-    @user.stub!(:register_jabber)  
+    @user.stub!(:register_jabber).and_return(true)  
     @room = Factory.build(:room, :user => @user, :nick => "")    
   end
   
