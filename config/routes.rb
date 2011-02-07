@@ -13,6 +13,12 @@ GroupChat::Application.routes.draw do
     resources :rooms 
   end
   
+  resources :rooms, :only => [] do
+    member do       
+      get "activate"
+    end
+  end
+  
   match "chats/login(.:format)" => "chats#login"
   match "chats/presence(.:format)" => "chats#presence"
   

@@ -11,14 +11,17 @@ class XmppClient
   #  Jabber::debug =  true if Rails.env == 'development'
     puts "[Jabber ID] #{jid}@#{domain}"
     @client = Jabber::Client.new(Jabber::JID::new("#{jid}@#{domain}"))
-    @client.connect
-    @roster = Jabber::Roster::Helper.new(@client)
+    @client.connect            
   end
 
+  def initialize_roster
+    @roster = Jabber::Roster::Helper.new(@client)
+  end
+  
   def register(password)
     @client.register(password)
   rescue Jabber::ServerError => e
-    p "[Registration Failure]" + e.message
+    puts "[Registration Failure]" + e.message
     if e.error_type == :modify
       instruction, fields = @client.register_info
       fields.each do  |info|
@@ -27,10 +30,19 @@ class XmppClient
       puts "instructions = #{instructions}"
     end
   end
+  
+  def self.login(jid, password = '123456', domain = 'siddharth-ravichandrans-macbook-pro.local')
+    xmpp_client = XmppClient.new(jid)
+    xmpp_client.authorize(password)
+    xmpp_client
+  rescue => e
+    puts "[LOGIN FAILED] \n " + e.message + "\n" + e.backtrace.inspect
+    return nil
+  end
 
-  def authorize(password)
-    puts "[Password] ********************************************************************* " + password.to_s
-    @client.auth(password)      
+  def authorize(password = '123456')
+    puts "[PASSWORD] **** #{password} *********"
+    @client.auth(password)       
   end
 
   def set_presence(presence = :available)

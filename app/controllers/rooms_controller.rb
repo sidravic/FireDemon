@@ -26,9 +26,18 @@ class RoomsController < ApplicationController
   end
   
   def join
-    @room = Room.find(params[:id])
-    @room.join
-    render 'show'
+   # @room = Room.find(params[:id])
+  #  @room.join
+  #  render 'show'
+  end
+  
+  def activate
+    @room = Room.find(params[:id])  
+    puts "[IN HERE]"  
+    respond_to do |format|
+      @room.login("administrator")
+      format.js { render :text => "OK"}
+    end
   end
 
   def edit

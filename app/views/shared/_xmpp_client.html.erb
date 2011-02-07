@@ -16,7 +16,8 @@
 		//	xmpp_client.set_presence('available');
 			alert(typeof ROOM_NICK);
 		   if(typeof ROOM_NICK != 'undefined'){
-				 xmpp_client.join_room(ROOM_NICK, chatroom_domain, bare_jid, 'available', null);					 	 
+				 xmpp_client.join_room(ROOM_NICK, chatroom_domain, bare_jid, 'available', null);
+				 initialize_room();					 	 
 				 console.log('JOIN ROOM Called');
 			}	
 		}
@@ -78,6 +79,19 @@
 			xmpp_client.groupchat_msg(message, chatroom_domain);
 		}
 		
+		// custom method to activate the adminstrator
+		//
+		function initialize_room(){
+			var room_id_info = (window.location.href).split("/");
+			var room_id = room_id_info[room_id_info.length - 1];
+			var url = "/rooms/" + room_id + "/activate.js";
+ 						
+			$.get(url,null, update_room_roster);
+		}
+		
+		function update_room_roster(response){
+			console.log(response);
+		}
 	
 	// Page methods to send message
 	$(document).ready(function(){

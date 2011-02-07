@@ -3,7 +3,8 @@ REDIS = Redis.new
 
 module RedisWrapper  
   module Set
-    class Redis
+    class Redis    
+
       def self.add(key, value)
         REDIS.sadd(key, value)    
       end
@@ -19,19 +20,26 @@ module RedisWrapper
       def self.member?(key, value)
         REDIS.sismember(key, value)
       end
-      
+
       def self.remove(key, value)
         REDIS.srem(key, value)
       end      
     end    
   end   
-  
+
   module All
     class Redis      
       def self.keys
         REDIS.keys
       end
+
+      # returns 'OK'
+      def self.flushall
+        REDIS.flushall
+      end
     end
+
+
   end
 
 end

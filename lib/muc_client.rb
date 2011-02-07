@@ -17,9 +17,12 @@ class MucClient
     @room_jid = room_jid
     jid = Jabber::JID.new("#{@room_jid}@conference.#{domain}/" + @xmpp_client.client.jid.node)
     puts " JID " + jid.to_s
-
     @muc.join(Jabber::JID.new("#{room_jid}@conference.#{domain}/" + @xmpp_client.client.jid.node))
+    return true
     puts "[JOINED ROOM] " + @muc.roster.inspect
+  rescue => e
+    puts "[JOIN FAILED] \n" + e.message
+    return false
   end
 
   def activate_callbacks
@@ -31,6 +34,7 @@ class MucClient
   def activate_join_callback
     @muc.add_join_callback do |m|
       puts "[NEW MEMBER JOINED] " + m.to.jid.node
+      send_message("#{m.to.jid.node} has joined the conversation")
     end
   end
 
@@ -42,7 +46,8 @@ class MucClient
 
   def activate_leave_callback
     @muc.add_leave_callback do |m|
-      puts "[MEMBER LEFT] " + m.to.jid.node
+      puts "[MEMBER left] " + m.to.jid.node
+      send_message("#{m.to.jid.node} has joined the conversation")
     end
   end
 
